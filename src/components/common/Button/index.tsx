@@ -113,6 +113,12 @@ const Button = styled(ButtonBase, {
         fontSize: '$BODY2',
         padding: '0px',
         border: 'none',
+        '&:active': {
+          backgroundColor: 'transparent',
+        },
+        '&:hover': {
+          backgroundColor: 'transparent',
+        },
       },
     },
   },

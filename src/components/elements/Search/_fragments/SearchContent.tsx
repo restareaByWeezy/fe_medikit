@@ -42,6 +42,8 @@ const SearchContent = () => {
 
 export default SearchContent
 
+// STYLE ///////////////////////////
+
 const Wrapper = styled(Col, {
   p: '20px',
 })
