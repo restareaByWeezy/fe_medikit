@@ -1,4 +1,4 @@
-import IconBack from 'assets/svg/iconBack.svg'
+import BackBtn from 'components/common/Button/BackBtn'
 import Text from 'components/common/Text'
 import { useRouter } from 'next/router'
 import { styled } from 'styles/globalStitches'
@@ -7,13 +7,9 @@ interface BoardHeaderProps {
 }
 
 const BoardHeader = ({ title }: BoardHeaderProps) => {
-  const router = useRouter()
-
   return (
     <Wrapper>
-      <button onClick={() => router.back()}>
-        <IconBack />
-      </button>
+      <BackBtn />
       <Text size="h4" weight="semiBold">
         {title}
       </Text>
