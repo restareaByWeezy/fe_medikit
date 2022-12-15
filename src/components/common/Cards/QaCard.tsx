@@ -1,9 +1,12 @@
+import { MouseEvent } from 'react'
+
 import { Card, CardContent, Stack } from '@mui/material'
 import IconA from 'assets/svg/iconA.svg'
 import IconHeart from 'assets/svg/iconHeart.svg'
 import IconHeartFilled from 'assets/svg/iconHeartFilled.svg'
 import IconMessage from 'assets/svg/iconMessage.svg'
 import IconQ from 'assets/svg/iconQ.svg'
+import { useRouter } from 'next/router'
 import { styled } from 'styles/globalStitches'
 
 import Text from '../Text'
@@ -16,6 +19,7 @@ export interface QaCardProps {
   answerNum: string
   likes: string
   isLiked: boolean
+  id: string
 }
 
 const QaCard = ({
@@ -25,9 +29,20 @@ const QaCard = ({
   answerNum,
   likes,
   isLiked,
+  id,
 }: QaCardProps) => {
+  const router = useRouter()
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
+    const dataId = e.currentTarget.dataset.id
+    router.push(`/qnadetail/${dataId}`)
+  }
+
   return (
-    <Card style={{ boxShadow: 'none' }}>
+    <CustomCard
+      data-id={id}
+      onClick={handleClick}
+      style={{ boxShadow: 'none' }}
+    >
       <CardContent style={{ width: '100%' }}>
         <Stack spacing={'20px'}>
           <Text size="body2" weight="bold">
@@ -83,13 +98,17 @@ const QaCard = ({
           </Row>
         </Stack>
       </CardContent>
-    </Card>
+    </CustomCard>
   )
 }
 
 export default QaCard
 
 // STYLE ///////////////
+
+const CustomCard = styled(Card, {
+  cursor: 'pointer',
+})
 
 const Question = styled('div', {
   '& svg': {

@@ -10,17 +10,22 @@ const QaCardList = () => {
     fetchQuestions,
   )
 
-  const list = questions?.map(qa => (
-    <QaCard
-      key={qa.question + qa.answer}
-      category={qa.category}
-      question={qa.question}
-      answer={qa.answer}
-      answerNum={qa.answerNum}
-      likes={qa.likes}
-      isLiked={qa.isLiked}
-    />
-  ))
+  const list = questions?.map(qa => {
+    const { id, question, answer, category, answerNum, likes, isLiked } = qa
+
+    return (
+      <QaCard
+        id={id}
+        key={id}
+        category={category}
+        question={question}
+        answer={answer}
+        answerNum={answerNum}
+        likes={likes}
+        isLiked={isLiked}
+      />
+    )
+  })
 
   return (
     <>

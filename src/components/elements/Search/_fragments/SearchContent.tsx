@@ -2,12 +2,15 @@ import { ChangeEvent, useState } from 'react'
 
 import { IconCloseGray, IconSearch, IconBack } from 'assets/svg'
 import Col from 'components/common/_Grid/Col'
+import { useRouter } from 'next/router'
 import { styled } from 'styles/globalStitches'
 
 import RecentKeyWords from './RecentKeyWords'
 import TrendKeyWords from './TrendKeyWords'
 
 const SearchContent = () => {
+  const router = useRouter()
+
   const [searchText, setSearchText] = useState('')
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchText(e.currentTarget.value)
@@ -19,7 +22,9 @@ const SearchContent = () => {
   return (
     <>
       <SearchBarWrapper>
-        <IconBack data-back />
+        <button onClick={() => router.back()}>
+          <IconBack data-back />
+        </button>
         <SearchInput
           placeholder="어떻게 아프신가요?"
           value={searchText}

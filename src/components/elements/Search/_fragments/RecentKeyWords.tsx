@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useState } from 'react'
+import { MouseEvent, useState } from 'react'
 
 import Badge from 'components/common/Badge'
 import Text from 'components/common/Text'
@@ -13,6 +13,7 @@ const RecentKeyWords = () => {
     { title: '어깨가 아파요' },
     { title: '골반이 아파요' },
   ])
+
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     const newArr = recentSearch.filter(
       keyword => keyword.title !== e.currentTarget.dataset.title,
