@@ -1,8 +1,9 @@
 import { ChangeEvent, useState } from 'react'
 
-import { IconCloseGray, IconSearch, IconBack } from 'assets/svg'
+import { IconCloseGray, IconSearch } from 'assets/svg'
 import BackBtn from 'components/common/Button/BackBtn'
 import Col from 'components/common/_Grid/Col'
+import Row from 'components/common/_Grid/Row'
 import { styled } from 'styles/globalStitches'
 
 import RecentKeyWords from './RecentKeyWords'
@@ -58,20 +59,14 @@ const DeleteButton = styled('button', {
   },
 })
 
-const SearchBarWrapper = styled('div', {
+const SearchBarWrapper = styled(Row, {
   position: 'relative',
   width: '100%',
   height: '57px',
-  padding: '16px 20px 16px 60px',
+  padding: '16px 20px',
   borderBottom: '1px solid $GRAY2',
   background: '$white',
-
-  ['& [data-back]']: {
-    position: 'absolute',
-    left: '35px',
-    top: '50%',
-    transform: 'translate(-50%,-50%)',
-  },
+  gap: '10px',
 
   ['& [data-search]']: {
     position: 'absolute',

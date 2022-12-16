@@ -20,6 +20,9 @@ const RecentKeyWords = () => {
     )
     setRecentSearch(newArr)
   }
+  const handleClear = () => {
+    setRecentSearch([])
+  }
 
   const recentSearchList = recentSearch.map(item => {
     return (
@@ -38,7 +41,7 @@ const RecentKeyWords = () => {
         <Text size="h4" weight="bold">
           최근 검색어
         </Text>
-        <DeleteBtn>모두 지우기</DeleteBtn>
+        <DeleteBtn onClick={handleClear}>모두 지우기</DeleteBtn>
       </Row>
       <RecentTagList>{recentSearchList}</RecentTagList>
     </Wrapper>
