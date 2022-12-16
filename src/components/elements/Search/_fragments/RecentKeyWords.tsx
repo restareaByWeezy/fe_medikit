@@ -4,9 +4,12 @@ import Badge from 'components/common/Badge'
 import Text from 'components/common/Text'
 import Col from 'components/common/_Grid/Col'
 import Row from 'components/common/_Grid/Row'
+import { useRouter } from 'next/router'
 import { styled } from 'styles/globalStitches'
 
 const RecentKeyWords = () => {
+  const router = useRouter()
+
   const [recentSearch, setRecentSearch] = useState([
     { title: '무릎이 아파요' },
     { title: '머리가 아파요' },
@@ -14,12 +17,17 @@ const RecentKeyWords = () => {
     { title: '골반이 아파요' },
   ])
 
-  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
+  const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
+    router.push(`/search/${e.currentTarget.dataset.title}`)
+  }
+
+  const handleDelete = (e: MouseEvent<HTMLDivElement>) => {
     const newArr = recentSearch.filter(
       keyword => keyword.title !== e.currentTarget.dataset.title,
     )
     setRecentSearch(newArr)
   }
+
   const handleClear = () => {
     setRecentSearch([])
   }
@@ -30,7 +38,8 @@ const RecentKeyWords = () => {
         key={item.title}
         title={item.title}
         deleteIcon
-        onClick={handleClick}
+        handleClick={handleClick}
+        handleDelete={handleDelete}
       />
     )
   })

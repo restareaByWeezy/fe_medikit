@@ -12,7 +12,8 @@ interface BadgeProps {
   deleteIcon?: boolean
   iconPosition?: 'suffix' | 'prefix'
   css?: CSS
-  onClick?: (e: MouseEvent<HTMLDivElement>) => void
+  handleDelete?: (e: MouseEvent<HTMLDivElement>) => void
+  handleClick?: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 const Badge = ({
@@ -20,11 +21,12 @@ const Badge = ({
   iconPosition,
   css,
   deleteIcon,
-  onClick,
+  handleClick,
+  handleDelete,
 }: BadgeProps) => {
   const iconGap = iconPosition === 'prefix' ? '0 0 0 6px' : '0 6px 0 0'
   return (
-    <Button css={css} badge>
+    <Button data-title={title} onClick={handleClick} css={css} badge>
       {iconPosition === 'prefix' && (
         <Image width="14px" height="14px" src={'/iconExample.svg'} alt="icon" />
       )}
@@ -33,7 +35,7 @@ const Badge = ({
         <Image width="14px" height="14px" src={'/iconExample.svg'} alt="icon" />
       )}
       {deleteIcon && (
-        <div data-title={title} onClick={onClick}>
+        <div data-title={title} onClick={handleDelete}>
           <IconDelete />
         </div>
       )}
