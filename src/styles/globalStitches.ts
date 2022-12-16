@@ -1,8 +1,6 @@
 import { createStitches } from '@stitches/react'
 
-export const { getCssText } = createStitches()
-
-export const { styled, css } = createStitches({
+export const { getCssText, styled, css } = createStitches({
   utils: {
     // Abbreviated margin properties
     m: (value: string) => ({
