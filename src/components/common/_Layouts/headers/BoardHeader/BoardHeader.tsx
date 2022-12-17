@@ -19,6 +19,7 @@ const BoardHeader = ({ title }: BoardHeaderProps) => {
 export default BoardHeader
 
 const Wrapper = styled('header', {
+  display: 'flex',
   position: 'relative',
   justifyContent: 'center',
   alignItems: 'center',

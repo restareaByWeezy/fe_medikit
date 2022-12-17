@@ -1,14 +1,18 @@
+import { QaCardProps } from 'components/common/Cards/QaCard'
 import QaCardList from 'components/common/Cards/QaCardList'
-import { example } from 'components/common/Cards/constants'
 import Col from 'components/common/_Grid/Col'
 
 import { Title } from './_style'
 
-const RecentQuestion = () => {
+interface RecentQuestionProps {
+  questions: QaCardProps[] | undefined
+}
+
+const RecentQuestion = ({ questions }: RecentQuestionProps) => {
   return (
     <Col>
       <Title>실시간 질문</Title>
-      <QaCardList qaList={example} />
+      <QaCardList questions={questions} moreViewClicked={true} />
     </Col>
   )
 }

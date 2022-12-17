@@ -1,19 +1,13 @@
 import { Stack } from '@mui/system'
-import { useQuery } from '@tanstack/react-query'
-import { fetchQuestions } from 'services'
 
 import QaCard, { QaCardProps } from './QaCard'
 
 interface QaCardListProps {
   moreViewClicked: boolean
+  questions: QaCardProps[] | undefined
 }
 
-const QaCardList = ({ moreViewClicked }: QaCardListProps) => {
-  const { data: questions } = useQuery<QaCardProps[]>(
-    ['questions'],
-    fetchQuestions,
-  )
-
+const QaCardList = ({ moreViewClicked, questions }: QaCardListProps) => {
   const list = questions?.map((qa, idx) => {
     const { id, question, answer, category, answerNum, likes, isLiked } = qa
 

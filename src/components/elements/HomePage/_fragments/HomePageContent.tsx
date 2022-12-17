@@ -1,17 +1,26 @@
 import { useState } from 'react'
 
+import { useQuery } from '@tanstack/react-query'
 import Button from 'components/common/Button'
+import { QaCardProps } from 'components/common/Cards/QaCard'
 import QaCardList from 'components/common/Cards/QaCardList'
 import FloatingBtn from 'components/common/FloatingBtn'
 import SearchBar from 'components/common/Input'
+import { fetchQuestions } from 'services'
 import { styled } from 'styles/globalStitches'
 
 import RecentKeyword from './RecentKeyword'
 import RecentQuestion from './RecentQuestion'
+
 import { Title } from './_style'
 
 const HomePageContent = () => {
   const [moreViewClicked, setMoreViewClicked] = useState(false)
+
+  const { data: questions } = useQuery<QaCardProps[]>(
+    ['questions'],
+    fetchQuestions,
+  )
 
   const handleClick = () => {
     if (!moreViewClicked) {
@@ -25,7 +34,7 @@ const HomePageContent = () => {
         <SearchBar />
         <QaWrapper>
           <Title>추천 메디킷</Title>
-          <QaCardList moreViewClicked={moreViewClicked} />
+          <QaCardList questions={questions} moreViewClicked={moreViewClicked} />
         </QaWrapper>
         <ViewMoreBtn
           className={!moreViewClicked ? 'blured' : ''}
@@ -42,7 +51,7 @@ const HomePageContent = () => {
         </FloatingBtnWrapper>
       </Wrapper>
       <RecentKeyword />
-      <RecentQuestion />
+      <RecentQuestion questions={questions} />
     </>
   )
 }
