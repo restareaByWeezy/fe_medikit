@@ -4,17 +4,26 @@ import { fetchQuestions } from 'services'
 
 import QaCard, { QaCardProps } from './QaCard'
 
-const QaCardList = () => {
+interface QaCardListProps {
+  moreViewClicked: boolean
+}
+
+const QaCardList = ({ moreViewClicked }: QaCardListProps) => {
   const { data: questions } = useQuery<QaCardProps[]>(
     ['questions'],
     fetchQuestions,
   )
 
-  const list = questions?.map(qa => {
+  const list = questions?.map((qa, idx) => {
     const { id, question, answer, category, answerNum, likes, isLiked } = qa
+
+    if (!moreViewClicked && idx > 3) {
+      return
+    }
 
     return (
       <QaCard
+        className={!moreViewClicked && idx === 3 ? 'blured' : ''}
         id={id}
         key={id}
         category={category}

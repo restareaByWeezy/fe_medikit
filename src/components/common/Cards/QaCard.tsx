@@ -13,6 +13,7 @@ import Text from '../Text'
 import Row from '../_Grid/Row'
 
 export interface QaCardProps {
+  className: string
   category: string
   question: string
   answer: string
@@ -23,6 +24,7 @@ export interface QaCardProps {
 }
 
 const QaCard = ({
+  className,
   category,
   question,
   answer,
@@ -39,6 +41,7 @@ const QaCard = ({
 
   return (
     <CustomCard
+      className={className}
       data-id={id}
       onClick={handleClick}
       style={{ boxShadow: 'none' }}
@@ -108,6 +111,12 @@ export default QaCard
 
 const CustomCard = styled(Card, {
   cursor: 'pointer',
+
+  ['&.blured']: {
+    pointerEvents: 'none',
+    WebkitMaskImage:
+      'linear-gradient(180deg, rgba(255,255,255,1), rgba(255,255,255,0))',
+  },
 })
 
 const Question = styled('div', {
