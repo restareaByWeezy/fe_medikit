@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { useQuery } from '@tanstack/react-query'
+import { dehydrate, QueryClient, useQuery } from '@tanstack/react-query'
 import Button from 'components/common/Button'
 import { QaCardProps } from 'components/common/Cards/QaCard'
 import QaCardList from 'components/common/Cards/QaCardList'
@@ -57,6 +57,18 @@ const HomePageContent = () => {
 }
 
 export default HomePageContent
+
+export async function getServerSideProps() {
+  const queryClient = new QueryClient()
+
+  await queryClient.prefetchQuery(['questions'], fetchQuestions)
+
+  return {
+    props: {
+      dehydratedState: dehydrate(queryClient),
+    },
+  }
+}
 
 // STYLE ///////////////////
 
