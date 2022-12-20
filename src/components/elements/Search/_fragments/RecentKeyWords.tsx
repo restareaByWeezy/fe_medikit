@@ -1,4 +1,5 @@
 import { MouseEvent, useState } from 'react'
+import ScrollContainer from 'react-indiana-drag-scroll'
 
 import Badge from 'components/common/Badge'
 import Text from 'components/common/Text'
@@ -15,6 +16,9 @@ const RecentKeyWords = () => {
     { title: '머리가 아파요' },
     { title: '어깨가 아파요' },
     { title: '골반이 아파요' },
+    { title: '무릎이 아파요' },
+    { title: '머리가 아파요' },
+    { title: '어깨가 아파요' },
   ])
 
   const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -52,7 +56,9 @@ const RecentKeyWords = () => {
         </Text>
         <DeleteBtn onClick={handleClear}>모두 지우기</DeleteBtn>
       </Row>
-      <RecentTagList>{recentSearchList}</RecentTagList>
+      <CustomScrollContainer horizontal vertical={false} hideScrollbars>
+        {recentSearchList}
+      </CustomScrollContainer>
     </Wrapper>
   )
 }
@@ -67,6 +73,8 @@ const DeleteBtn = styled('button', {
   fontWeight: '$semiBold',
 })
 
-const RecentTagList = styled(Row, {
+const CustomScrollContainer = styled(ScrollContainer, {
+  display: 'flex',
+  width: '100%',
   gap: '5px',
 })
