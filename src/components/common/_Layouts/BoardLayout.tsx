@@ -1,19 +1,12 @@
 import { styled } from 'styles/globalStitches'
 
-import styles from './BoardLayout.module.scss'
-
 interface HomeLayoutProps {
   header?: JSX.Element
   footer?: JSX.Element
   content?: JSX.Element
 }
 
-const BoardLayout = ({
-  //
-  header,
-  footer,
-  content,
-}: HomeLayoutProps) => {
+const BoardLayout = ({ header, footer, content }: HomeLayoutProps) => {
   return (
     <>
       {header}

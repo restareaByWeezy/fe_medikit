@@ -1,5 +1,5 @@
 import BoardHeader from 'components/common/_Layouts/headers/BoardHeader/BoardHeader'
-import BoardLayout from 'components/common/_Layouts/layouts/BoardLayout/BoardLayout'
+import BoardLayout from 'components/common/_Layouts/BoardLayout'
 
 import QnaDetailContent from './_fragments/QnaDetailContent'
 

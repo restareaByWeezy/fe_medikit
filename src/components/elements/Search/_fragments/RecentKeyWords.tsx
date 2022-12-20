@@ -46,7 +46,7 @@ const RecentKeyWords = () => {
 
   return (
     <Wrapper>
-      <Row css={{ m: '20px 0 22px' }} justify="spaceBetween">
+      <Row css={{ mb: '22px' }} justify="spaceBetween">
         <Text size="h4" weight="bold">
           최근 검색어
         </Text>

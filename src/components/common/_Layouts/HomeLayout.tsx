@@ -1,6 +1,6 @@
 import { styled } from 'styles/globalStitches'
 
-import HomeHeader from '../../headers/HomeHeader/HomeHeader'
+import HomeHeader from './headers/HomeHeader/HomeHeader'
 
 interface HomeLayoutProps {
   header?: JSX.Element

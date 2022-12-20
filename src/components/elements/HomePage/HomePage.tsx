@@ -1,4 +1,4 @@
-import HomeLayout from 'components/common/_Layouts/layouts/HomeLayout/HomeLayout'
+import HomeLayout from 'components/common/_Layouts/HomeLayout'
 
 import HomePageContent from './_fragments/HomePageContent'
 
