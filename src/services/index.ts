@@ -6,3 +6,14 @@ export const fetchQuestions = async () => {
     return result.data
   }
 }
+
+export const fetchQuestionDetail = async (
+  id: string | undefined | string[],
+) => {
+  console.log(id, typeof id)
+
+  const result = await axios.get(`/api/qnadetail/${id}`)
+  if (result) {
+    return result.data
+  }
+}
