@@ -20,6 +20,7 @@ export interface Comment {
   commentor: string
   contents: string
   selected: boolean
+  commentedAt: string
 }
 interface DetailProps {
   questionId: string

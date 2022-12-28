@@ -2,6 +2,7 @@ import Button from 'components/common/Button'
 import Text from 'components/common/Text'
 import Col from 'components/common/_Grid/Col'
 import Row from 'components/common/_Grid/Row'
+import dayjs from 'dayjs'
 import { styled } from 'styles/globalStitches'
 
 import { Comment } from './QnaDetailContent'
@@ -11,14 +12,20 @@ interface CommentItemProps {
 }
 
 const CommentItem = ({ comment }: CommentItemProps) => {
-  const { commentor, contents, selected } = comment
+  const { commentor, contents, selected, commentedAt } = comment
+
+  const date = dayjs(commentedAt)
+  const now = dayjs()
+  const days = now.diff(date, 'd')
+  console.log(date, now)
+
   return (
     <Wrapper>
       <Row justify="spaceBetween">
         <Text size="body2" weight="bold">
           {commentor}
         </Text>
-        <Text size="body2">2일전</Text>
+        <Text size="body2">{days}일 전</Text>
       </Row>
       <Contents>
         <Text as="p">{contents}</Text>
