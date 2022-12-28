@@ -7,6 +7,8 @@ const Text = styled('span', {
       secondary: { color: '$secondary_text' },
       tertiary: { color: '$tertiary_text' },
       white: { color: '$white' },
+
+      main: { color: '$primary' },
     },
     size: {
       h1: { fontSize: '$H1' },

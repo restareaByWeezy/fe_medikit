@@ -13,7 +13,10 @@ import { useRouter } from 'next/router'
 import { fetchQuestionDetail } from 'services'
 import { styled } from 'styles/globalStitches'
 
-interface Comment {
+import CommentList from './CommentList'
+
+export interface Comment {
+  commentId: string
   commentor: string
   contents: string
   selected: boolean
@@ -40,38 +43,49 @@ const QnaDetailContent = () => {
     console.log(detail)
   }, [detail])
 
-  const tagList = detail?.tags?.map(tag => <Text key={tag}>#{tag}</Text>)
+  const tagList = detail?.tags?.map(tag => (
+    <Text key={tag} color="main">
+      #{tag}
+    </Text>
+  ))
 
   return (
-    <Col>
-      <Category size="body2">{detail?.category}</Category>
-      <Title size="h2" weight="semiBold" as="h1">
-        {detail?.title}
-      </Title>
-      <Date size="body2">2022</Date>
-      <Content size="body1" color="secondary" as="p">
-        {detail?.content}
-      </Content>
-      <Tags>{tagList}</Tags>
-      <IconRow align="center" css={{ gap: '5px' }}>
-        <Row>
-          <IconMessage />
-          <Text color="secondary" size="body2">
-            {detail?.comments?.length}
-          </Text>
-        </Row>
-
-        <Row>
+    <>
+      <Wrapper>
+        <Category size="body2">{detail?.category}</Category>
+        <Title size="h2" weight="semiBold" as="h1">
+          {detail?.title}
+        </Title>
+        <Date size="body2">2022</Date>
+        <Content size="body1" color="secondary" as="p">
+          {detail?.content}
+        </Content>
+        <Tags>{tagList}</Tags>
+        <IconRow align="center" css={{ gap: '5px' }}>
           <Row>
-            <IconHeartFilled />
-            <Text css={{ marginRight: '12px' }} color="secondary" size="body2">
-              {detail?.likes}
+            <IconMessage />
+            <Text color="secondary" size="body2">
+              {detail?.comments?.length}
             </Text>
-            <IconShare />
           </Row>
-        </Row>
-      </IconRow>
-    </Col>
+
+          <Row>
+            <Row>
+              <IconHeartFilled />
+              <Text
+                css={{ marginRight: '12px' }}
+                color="secondary"
+                size="body2"
+              >
+                {detail?.likes}
+              </Text>
+              <IconShare />
+            </Row>
+          </Row>
+        </IconRow>
+      </Wrapper>
+      {detail?.comments && <CommentList comments={detail?.comments} />}
+    </>
   )
 }
 
@@ -92,6 +106,11 @@ export async function getServerSideProps(context: { params: { id: string } }) {
 }
 
 // STYLE /////////////////////////////////////
+
+const Wrapper = styled(Col, {
+  backgroundColor: '$white',
+  padding: '24px 20px',
+})
 
 const Category = styled(Text, {
   marginBottom: '16px',

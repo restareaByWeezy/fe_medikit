@@ -1,16 +1,22 @@
 import { styled } from 'styles/globalStitches'
 
-interface HomeLayoutProps {
+interface BoardLayoutProps {
   header?: JSX.Element
   footer?: JSX.Element
   content?: JSX.Element
+  noPadding?: boolean
 }
 
-const BoardLayout = ({ header, footer, content }: HomeLayoutProps) => {
+const BoardLayout = ({
+  header,
+  footer,
+  content,
+  noPadding,
+}: BoardLayoutProps) => {
   return (
     <>
       {header}
-      <Wrapper>{content}</Wrapper>
+      <Wrapper noPadding={noPadding}>{content}</Wrapper>
       {footer}
     </>
   )
@@ -24,4 +30,12 @@ const Wrapper = styled('div', {
   backgroundColor: '$GRAY1',
   fontSize: '18px',
   padding: '24px 20px',
+
+  variants: {
+    noPadding: {
+      true: {
+        padding: '0px',
+      },
+    },
+  },
 })

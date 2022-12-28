@@ -8,6 +8,7 @@ const QnaDetail = () => {
     <BoardLayout
       header={<BoardHeader title="질문" />}
       content={<QnaDetailContent />}
+      noPadding
     />
   )
 }
