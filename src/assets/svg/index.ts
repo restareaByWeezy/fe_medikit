@@ -14,8 +14,10 @@ import IconSearch from './iconSearch.svg'
 import IconShare from './iconShare.svg'
 import IconWrite from './iconWrite.svg'
 import IconWriteOutlined from './iconWriteOutlined.svg'
+import Logo from './logo.svg'
 
 export {
+  Logo,
   IconA,
   IconAnswer,
   IconBack,

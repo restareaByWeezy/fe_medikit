@@ -13,6 +13,7 @@ import { NextPageContext } from 'next'
 import type { AppProps } from 'next/app'
 
 import Head from 'next/head'
+import { styled } from 'styles/globalStitches'
 
 type PageProps = {
   dehydratedState?: DehydratedState
@@ -35,7 +36,9 @@ const MyApp = ({ Component, pageProps }: ExtendedAppProps<PageProps>) => {
               content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
             />
           </Head>
-          <Component {...pageProps} />
+          <Wrapper>
+            <Component {...pageProps} />
+          </Wrapper>
         </Hydrate>
       </QueryClientProvider>
     </>
@@ -43,3 +46,9 @@ const MyApp = ({ Component, pageProps }: ExtendedAppProps<PageProps>) => {
 }
 
 export default MyApp
+
+// STYLE //
+
+const Wrapper = styled('div', {
+  minWidth: '480px',
+})
