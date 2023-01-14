@@ -25,9 +25,11 @@ const HomeLayout = ({
 export default HomeLayout
 
 // STYLE  ////////////////////////////
+
 const Wrapper = styled('div', {
   width: '100%',
   height: '100%',
   padding: '20px',
   backgroundColor: '#f7f8f9',
+  maxWidth: '480px',
 })

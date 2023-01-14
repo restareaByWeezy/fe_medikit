@@ -14,15 +14,19 @@ const SearchLayout = ({
   content,
 }: SearchLayoutProps) => {
   return (
-    <>
+    <Container>
       {header}
       <Wrapper>{content}</Wrapper>
       {footer}
-    </>
+    </Container>
   )
 }
 
 export default SearchLayout
+
+const Container = styled('div', {
+  maxWidth: '480px',
+})
 
 const Wrapper = styled('div', {
   width: '100%',

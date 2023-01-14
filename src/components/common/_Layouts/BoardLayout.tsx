@@ -14,11 +14,11 @@ const BoardLayout = ({
   noPadding,
 }: BoardLayoutProps) => {
   return (
-    <>
+    <Container>
       {header}
       <Wrapper noPadding={noPadding}>{content}</Wrapper>
       {footer}
-    </>
+    </Container>
   )
 }
 
@@ -38,4 +38,8 @@ const Wrapper = styled('div', {
       },
     },
   },
+})
+
+const Container = styled('div', {
+  maxWidth: '480px',
 })
